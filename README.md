@@ -21,17 +21,17 @@ And some helpful inclusions and Three.js utilities:
 
 Inside `src/examples/`, you’ll find multiple starting points:
 
-`sceneExampleBasic.ts` – Simple lit cube casting shadows on a plane
+<p align="center">
+  <img src="./media/basic-scene.gif" width="32%" alt="Basic Scene Example" />
+  <img src="./media/shader-scene.gif" width="32%" alt="Vertex+Fragment Shader Example" />
+  <img src="./media/shader-demo.gif" width="32%" alt="ShaderCanvas Example" />
+</p>
 
-![basic scene](./basic-scene.gif)
+- `sceneExampleBasic.ts` – Simple lit cube casting shadows on a plane
 
-`sceneExample.ts` – Plane with custom vertex + fragment shader
+- `sceneExample.ts` – Plane with custom vertex + fragment shader
 
-![shader scene](./shader-scene.gif)
-
-`shaderExample.ts` – ShaderCanvas using a simple fragment shader that uses the `uTime` and `uMouse` uniforms
-
-![shader demo](./shader-demo.gif)
+- `shaderExample.ts` – ShaderCanvas using a simple fragment shader that uses the `uTime` and `uMouse` uniforms
 
 ---
 
