@@ -11,6 +11,10 @@
     "index.js",
     "template.json"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sbobyn/three-demo-template/tree/main"
+  },
   "keywords": [
     "vite",
     "three.js",
