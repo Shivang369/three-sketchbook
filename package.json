@@ -1,23 +1,26 @@
 {
-  "name": "vite-threejs-template",
-  "private": true,
-  "version": "0.0.0",
+  "name": "create-three-demo",
+  "version": "1.0.0",
+  "description": "Unofficial Vite + Three.js template with convenience helpers and examples",
   "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build"
+  "bin": {
+    "create-three-demo": "index.js"
   },
-  "devDependencies": {
-    "@types/stats.js": "^0.17.4",
-    "@types/three": "^0.178.0",
-    "vite": "^6.2.2",
-    "vite-plugin-glsl": "^1.3.3",
-    "vite-plugin-restart": "^0.4.2"
-  },
+  "files": [
+    "template",
+    "index.js",
+    "template.json"
+  ],
+  "keywords": [
+    "vite",
+    "three.js",
+    "shader",
+    "template",
+    "starter"
+  ],
+  "author": "Steven Bobyn",
+  "license": "MIT",
   "dependencies": {
-    "gsap": "^3.12.5",
-    "lil-gui": "^0.20.0",
-    "stats.js": "^0.17.0",
-    "three": "^0.177.0"
+    "fs-extra": "^11.3.2"
   }
 }

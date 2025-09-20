@@ -16,7 +16,6 @@ const { scene, renderer, controls } = setupScene({
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-// --- Lights ---
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
 scene.add(ambientLight);
 
@@ -27,7 +26,6 @@ directionalLight.castShadow = true;
 directionalLight.shadow.mapSize.set(1024, 1024);
 scene.add(directionalLight);
 
-// --- Ground Plane ---
 const planeGeometry = new THREE.PlaneGeometry(10, 10);
 const planeMaterial = new THREE.MeshStandardMaterial({ color: 0xaaaaaa });
 const plane = new THREE.Mesh(planeGeometry, planeMaterial);
@@ -35,7 +33,6 @@ plane.receiveShadow = true;
 plane.rotation.x = -Math.PI / 2;
 scene.add(plane);
 
-// --- Main Mesh ---
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 const boxMaterial = new THREE.MeshStandardMaterial({ color: 0x008080 });
 const box = new THREE.Mesh(boxGeometry, boxMaterial);
