@@ -1,31 +1,19 @@
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import GUI from "lil-gui";
-import Stats from "stats.js";
 
 import vertShaderSource from "./shaders/vertex.glsl";
 import fragShaderSource from "./shaders/fragment.glsl";
 
-const debugObject = {
-  depthColor: "#186691",
-  surfaceColor: "#9bd8ff",
-  size: 1,
-  subdivisions: 32,
-  wireframe: false,
-};
+import { setupScene } from "./core/setupScene";
+import { createFullScreenPerspectiveCamera } from "./core/createFullscreenCamera";
+// import { createFullScreenOrthographicCamera } from "./core/createFullscreenCamera";
+import { setupStats } from "./core/setupStats";
 
-const stats = new Stats();
-stats.showPanel(0);
-document.body.appendChild(stats.dom);
+const camera = createFullScreenPerspectiveCamera();
+// const camera = createFullScreenOrthographicCamera();
 
-const windowDims = {
-  width: window.innerWidth,
-  height: window.innerHeight,
-};
-
-const canvas = document.querySelector("canvas.webgl") as HTMLCanvasElement;
-
-const scene = new THREE.Scene();
+const { scene, renderer, controls } = setupScene({ camera });
+// const { scene, renderer } = setupScene({camera}); // without orbit controls
 
 const axesHelper = new THREE.AxesHelper(1);
 scene.add(axesHelper);
@@ -36,10 +24,9 @@ scene.add(gridHelper);
 
 let geometry = new THREE.PlaneGeometry(1, 1, 32, 32);
 
-const regenerateGeometry = (size: number, subdivisions: number) => {
-  geometry.dispose(); // Dispose of the old geometry to free up memory
-  geometry = new THREE.PlaneGeometry(size, size, subdivisions, subdivisions);
-  return geometry;
+const debugObject = {
+  depthColor: "#186691",
+  surfaceColor: "#9bd8ff",
 };
 
 const material = new THREE.ShaderMaterial({
@@ -64,81 +51,26 @@ scene.add(mesh);
 
 const gui = new GUI();
 
-gui
-  .add(material.uniforms.uFrequency.value, "x")
-  .min(0)
-  .max(20)
-  .step(0.01)
-  .name("frequencyX");
-gui
-  .add(material.uniforms.uFrequency.value, "y")
-  .min(0)
-  .max(20)
-  .step(0.01)
-  .name("frequencyZ");
-gui
-  .add(material.uniforms.uAmplitude.value, "x")
-  .min(0)
-  .max(1)
-  .step(0.01)
-  .name("amplitudeX");
-gui
-  .add(material.uniforms.uAmplitude.value, "y")
-  .min(0)
-  .max(1)
-  .step(0.01)
-  .name("amplitudeZ");
 gui.addColor(debugObject, "depthColor").onChange(() => {
   material.uniforms.uDepthColor.value.set(debugObject.depthColor);
 });
 gui.addColor(debugObject, "surfaceColor").onChange(() => {
   material.uniforms.uSurfaceColor.value.set(debugObject.surfaceColor);
 });
-gui.add(debugObject, "size", 0.1, 2, 0.01).onChange((size) => {
-  mesh.geometry = regenerateGeometry(size, debugObject.subdivisions);
-});
-gui.add(debugObject, "subdivisions", 1, 128, 1).onChange((subdivisions) => {
-  mesh.geometry = regenerateGeometry(debugObject.size, subdivisions);
-});
-gui.add(material, "wireframe").onChange((value) => {
-  material.wireframe = value;
-});
-
-const camera = new THREE.PerspectiveCamera(
-  75,
-  windowDims.width / windowDims.height,
-  0.1,
-  100
-);
-camera.position.set(1, 1, 1);
-scene.add(camera);
-
-const orbitControls = new OrbitControls(camera, canvas);
-orbitControls.enableDamping = true;
-
-const renderer = new THREE.WebGLRenderer({
-  canvas: canvas,
-});
-renderer.setSize(windowDims.width, windowDims.height);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-window.addEventListener("resize", () => {
-  windowDims.width = window.innerWidth;
-  windowDims.height = window.innerHeight;
-
-  camera.aspect = windowDims.width / windowDims.height;
-  camera.updateProjectionMatrix();
-
-  renderer.setSize(windowDims.width, windowDims.height);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-});
 
 const clock = new THREE.Clock();
+const stats = setupStats();
 
 renderer.setAnimationLoop(() => {
   stats.begin();
   material.uniforms.uTime.value = clock.getElapsedTime();
-  orbitControls.update();
+  controls.update();
   renderer.render(scene, camera);
   stats.end();
 });
+
+// simplify without stats and orbit controls if wanted
+// renderer.setAnimationLoop(() => {
+//   material.uniforms.uTime.value = clock.getElapsedTime();
+//   renderer.render(scene, camera);
+// });
