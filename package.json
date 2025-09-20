@@ -1,6 +1,6 @@
 {
   "name": "create-three-demo",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unofficial Vite + Three.js template with convenience helpers and examples",
   "type": "module",
   "bin": {
