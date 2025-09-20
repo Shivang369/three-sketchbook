@@ -19,7 +19,7 @@ export function setupScene({
 
   const scene = new THREE.Scene();
 
-  let controls: OrbitControls | null = null;
+  let controls: OrbitControls | undefined = undefined;
   if (enableOrbitControls) {
     controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true;

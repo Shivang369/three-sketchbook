@@ -62,7 +62,7 @@ const stats = setupStats();
 renderer.setAnimationLoop(() => {
   stats.begin();
   material.uniforms.uTime.value = clock.getElapsedTime();
-  controls.update();
+  controls?.update();
   renderer.render(scene, camera);
   stats.end();
 });
