@@ -135,19 +135,10 @@ window.addEventListener("resize", () => {
 
 const clock = new THREE.Clock();
 
-const update = () => {
+renderer.setAnimationLoop(() => {
   stats.begin();
-
-  const elapsedTime = clock.getElapsedTime();
-  material.uniforms.uTime.value = elapsedTime;
-
+  material.uniforms.uTime.value = clock.getElapsedTime();
   orbitControls.update();
-
   renderer.render(scene, camera);
-
-  window.requestAnimationFrame(update);
-
   stats.end();
-};
-
-update();
+});
