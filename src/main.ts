@@ -33,8 +33,6 @@ const material = new THREE.ShaderMaterial({
   vertexShader: vertShaderSource,
   fragmentShader: fragShaderSource,
   uniforms: {
-    uFrequency: { value: new THREE.Vector2(10, 5) },
-    uAmplitude: { value: new THREE.Vector2(0.1, 0.1) },
     uDepthColor: { value: new THREE.Color(debugObject.depthColor) },
     uSurfaceColor: { value: new THREE.Color(debugObject.surfaceColor) },
     uTime: { value: 0 },
