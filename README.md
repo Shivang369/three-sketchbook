@@ -16,7 +16,22 @@ And some helpful inclusions and Three.js utilities:
 - **ShaderCanvas** – full-screen quad with built-in uniforms (`uTime`, `uResolution`, `uMouse`)
 - **[Stats.js](https://github.com/mrdoob/stats.js) helper** – optional FPS panel for performance debugging
 - **[lil-gui](https://github.com/georgealways/lil-gui)** – lightweight debug GUI for tweaking uniforms, material parameters, and scene settings in real time
-- **Examples** – a basic lit scene, a plane with custom vertex+fragment shader, and a ShaderCanvas demo
+
+## 🖼 Starting Example
+
+Inside `src/examples/`, you’ll find multiple starting points:
+
+`sceneExampleBasic.ts` – Simple lit cube casting shadows on a plane
+
+![basic scene](./basic-scene.gif)
+
+`sceneExample.ts` – Plane with custom vertex + fragment shader
+
+![shader scene](./shader-scene.gif)
+
+`shaderExample.ts` – ShaderCanvas using a simple fragment shader that uses the `uTime` and `uMouse` uniforms
+
+![shader demo](./shader-demo.gif)
 
 ---
 
@@ -29,17 +44,7 @@ pnpm install # or npm install
 pnpm dev
 ```
 
-## 🖼 Starting Example
-
-Inside `src/examples/`, you’ll find multiple ways to start:
-
-`sceneExample.ts` – Plane with custom vertex + fragment shader
-
-`sceneExampleBasic.ts` – Simple lit cube casting shadows on a plane
-
-`shaderExample.ts` – Pure fragment shader demo using ShaderCanvas
-
-Pick one by editing `src/main.ts`:
+Pick a starting demo by editing `src/main.ts`:
 
 ```javascript
 // src/main.ts
