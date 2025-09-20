@@ -1,4 +1,7 @@
 import * as THREE from "three";
+import Stats from "stats.js";
+
+import { setupStats } from "./setupStats";
 
 export class ShaderCanvas {
   private scene: THREE.Scene;
@@ -6,6 +9,7 @@ export class ShaderCanvas {
   private renderer: THREE.WebGLRenderer;
   private material: THREE.ShaderMaterial;
   private clock = new THREE.Clock();
+  private stats?: Stats;
 
   constructor({
     fragmentShader,
@@ -16,11 +20,13 @@ export class ShaderCanvas {
     `,
     uniforms = {},
     canvas = document.querySelector("canvas.webgl") as HTMLCanvasElement,
+    enableStats = false,
   }: {
     fragmentShader: string;
     vertexShader?: string;
     uniforms?: Record<string, THREE.IUniform<any>>;
     canvas?: HTMLCanvasElement;
+    enableStats?: boolean;
   }) {
     this.scene = new THREE.Scene();
 
@@ -29,7 +35,6 @@ export class ShaderCanvas {
 
     // Fullscreen quad geometry
     const geometry = new THREE.PlaneGeometry(2, 2);
-
     // Merge user uniforms with built-in time + resolution
     this.material = new THREE.ShaderMaterial({
       vertexShader,
@@ -82,12 +87,20 @@ export class ShaderCanvas {
     window.addEventListener("mouseup", () => {
       // currently not used, not tracking mouse click release
     });
+
+    if (enableStats) {
+      this.stats = setupStats();
+    }
   }
 
   start() {
     this.renderer.setAnimationLoop(() => {
+      this.stats?.begin();
+
       this.material.uniforms.uTime.value = this.clock.getElapsedTime();
       this.renderer.render(this.scene, this.camera);
+
+      this.stats?.end();
     });
   }
 }

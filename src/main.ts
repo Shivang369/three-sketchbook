@@ -1,2 +1,2 @@
-// import "./examples/shaderDemo";
-import "./examples/sceneDemo";
+import "./examples/shaderDemo";
+// import "./examples/sceneDemo";
