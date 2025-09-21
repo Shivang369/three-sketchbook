@@ -1,20 +1,49 @@
 #!/usr/bin/env node
-import { fileURLToPath } from "url";
-import { dirname, resolve } from "path";
 import fs from "fs-extra";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { execSync } from "node:child_process";
+import prompts from "prompts";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const targetDir = process.argv[2] || "my-three-demo";
-const templateDir = resolve(__dirname, "template");
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-console.log(`Scaffolding project in ${targetDir}...`);
+async function main() {
+  const targetDir = process.argv[2] || "my-sketchbook";
+  const templateDir = path.join(__dirname, "template");
 
-await fs.copy(templateDir, targetDir, {
-  overwrite: false,
-  errorOnExist: true,
-});
+  console.log(`\n📦 Copying template into ${targetDir}...`);
+  await fs.copy(templateDir, targetDir);
 
-console.log("Done! Next steps:");
-console.log(`  cd ${targetDir}`);
-console.log("  pnpm install");
-console.log("  pnpm dev");
+  process.chdir(targetDir);
+
+  // Ask if user wants to initialize a git repo
+  const { shouldInitGit } = await prompts({
+    type: "confirm",
+    name: "shouldInitGit",
+    message: "Initialize a new git repository?",
+    initial: true,
+  });
+
+  if (shouldInitGit) {
+    try {
+      execSync("git init", { stdio: "ignore" });
+      execSync("git branch -M main", { stdio: "ignore" });
+      execSync("git add .", { stdio: "ignore" });
+      execSync('git commit -m "Initial commit from create-three-sketchbook"', {
+        stdio: "ignore",
+      });
+      console.log("✅ Git repository initialized.");
+    } catch (err) {
+      console.warn("⚠️ Failed to initialize git repo:", err.message);
+    }
+  } else {
+    console.log("Skipping git init.");
+  }
+
+  console.log("\n🎉 Done! Next steps:");
+  console.log(`  cd ${targetDir}`);
+  console.log("  pnpm install   # or npm install");
+  console.log("  pnpm dev       # start the dev server");
+}
+
+main();
