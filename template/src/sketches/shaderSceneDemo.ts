@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import GUI from "lil-gui";
 
 import vertShaderSource from "./shaders/vertex.glsl";
 import fragShaderSource from "./shaders/fragment.glsl";
