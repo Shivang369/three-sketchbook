@@ -25,10 +25,10 @@
   "author": "Steven Bobyn",
   "license": "MIT",
   "dependencies": {
-    "prompts": "^2.4.2"
+    "prompts": "^2.4.2",
+    "fs-extra": "^11.3.2"
   },
   "devDependencies": {
-    "vite": "^6.3.6",
-    "fs-extra": "^11.3.2"
+    "vite": "^6.3.6"
   }
 }
