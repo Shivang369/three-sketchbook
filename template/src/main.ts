@@ -26,10 +26,13 @@ const params = { sketch: sketchNames[0] };
 const controller = gui.add(params, "sketch", sketchNames).name("Select Sketch");
 
 const router = new Router((path: string) => {
-  const sketchName =
-    path.replace(/^\/?sketches\//, "") ||
-    localStorage.getItem("lastSketch") ||
-    sketchNames[0];
+  let sketchName = path.replace(/^\/?sketches\//, "");
+
+  //  If we end up with "/" or empty string, load last sketch or first sketch
+  if (sketchName === "/" || sketchName === "") {
+    sketchName = localStorage.getItem("lastSketch") || sketchNames[0];
+  }
+
   switchSketch(sketchName);
 });
 
