@@ -19,15 +19,17 @@ export class ShaderCanvas {
       }
     `,
     uniforms = {},
-    canvas = document.querySelector("canvas.webgl") as HTMLCanvasElement,
     enableStats = false,
   }: {
     fragmentShader: string;
     vertexShader?: string;
     uniforms?: Record<string, THREE.IUniform<any>>;
-    canvas?: HTMLCanvasElement;
     enableStats?: boolean;
   }) {
+    const canvas = document.createElement("canvas");
+    canvas.classList.add("shader-canvas");
+    document.querySelector("#app")?.appendChild(canvas);
+
     this.scene = new THREE.Scene();
 
     // Fullscreen camera (-1 to 1 space)
@@ -102,5 +104,9 @@ export class ShaderCanvas {
 
       this.stats?.end();
     });
+  }
+
+  public getRenderer(): THREE.WebGLRenderer {
+    return this.renderer;
   }
 }

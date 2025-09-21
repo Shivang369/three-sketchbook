@@ -15,7 +15,9 @@ export function setupScene({
   camera: THREE.Camera;
   controls?: OrbitControls;
 } {
-  const canvas = document.querySelector("canvas.webgl") as HTMLCanvasElement;
+  const canvas = document.createElement("canvas");
+  canvas.classList.add("webgl");
+  document.querySelector("#app")?.appendChild(canvas);
 
   const scene = new THREE.Scene();
 
