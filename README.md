@@ -3,7 +3,7 @@
 An **opinionated unofficial** [Vite](https://vitejs.dev/) + [Three.js](https://threejs.org/)
 **sketchbook** template for quickly quickly building and organizing multiple /Three.js demos in one place.
 
-<img src="./media/three-sketchbook-demo.gif" alt="Three Sketchbook Demo" width="30%" />
+<img src="./media/three-sketchbook-demo.gif" alt="Three Sketchbook Demo" width="50%" />
 
 The project is a fork of [three-demo-template](https://github.com/sbobyn/three-demo-template)
 that adds support for multiple demos (sketches) each with their own routes
