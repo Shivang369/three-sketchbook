@@ -1,10 +1,10 @@
 {
-  "name": "create-three-demo",
-  "version": "1.0.6",
-  "description": "Unofficial Vite + Three.js template with convenience helpers and examples",
+  "name": "create-three-sketchbook",
+  "version": "1.0.0",
+  "description": "Unofficial Vite + Three.js sketchbook template with convenience helpers and examples",
   "type": "module",
   "bin": {
-    "create-three-demo": "index.js"
+    "create-three-sketchbook": "index.js"
   },
   "files": [
     "template",
@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sbobyn/three-demo-template/tree/main"
+    "url": "https://github.com/sbobyn/three-sketchbook"
   },
   "keywords": [
     "vite",
