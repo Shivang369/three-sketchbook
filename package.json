@@ -26,5 +26,8 @@
   "license": "MIT",
   "dependencies": {
     "fs-extra": "^11.3.2"
+  },
+  "devDependencies": {
+    "vite": "^6.3.6"
   }
 }
