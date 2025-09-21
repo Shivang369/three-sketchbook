@@ -3,6 +3,8 @@
 An **opinionated unofficial** [Vite](https://vitejs.dev/) + [Three.js](https://threejs.org/)
 **sketchbook** template for quickly quickly building and organizing multiple /Three.js demos in one place.
 
+<img src="./media/three-sketchbook-demo.gif" alt="Three Sketchbook Demo" width="30%" />
+
 The project is a fork of [three-demo-template](https://github.com/sbobyn/three-demo-template)
 that adds support for multiple demos (sketches) each with their own routes
 that can be easily navigated between using a provided gui.
@@ -13,9 +15,6 @@ This template provides a clean, modern dev environment with:
 - Automatic Sketch Loading – drop a file into `src/sketches/` and it becomes routable
 - Persistent Navigation UI – select sketches via a built-in `lil-gui`
   dropdown
-
-in addition to everything provided by [three-demo-template](https://github.com/sbobyn/three-demo-template):
-
 - **[Vite](https://vitejs.dev/)** – fast dev server with HMR, optimized builds
 - **TypeScript** – preconfigured, with a sensible default config
 - **[vite-plugin-glsl](https://www.npmjs.com/package/vite-plugin-glsl)** – import `.glsl, .vs, .fs, .vert, .frag` shader files directly with live reload
@@ -25,8 +24,6 @@ in addition to everything provided by [three-demo-template](https://github.com/s
 - **ShaderCanvas** – full-screen quad with built-in uniforms (`uTime`, `uResolution`, `uMouse`)
 - **[Stats.js](https://github.com/mrdoob/stats.js) helper** – optional FPS panel for performance debugging
 - **[lil-gui](https://github.com/georgealways/lil-gui)** – lightweight debug GUI for tweaking uniforms, material parameters, and scene settings in real time
-
-![Three Sketchbook Demo](./media/three-sketchbook-demo.gif)
 
 ## 🎮 How It Works
 
