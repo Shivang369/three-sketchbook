@@ -37,8 +37,9 @@ Each sketch is a file in `src/sketches/` that exports a function returning a `TH
 Navigation is handled by a tiny hash router (based on [fragments-boilerplate-vanilla](https://github.com/phobon/fragments-boilerplate-vanilla)), so you can deep-link directly to a sketch:
 
 ```
-#/sketches/rotating-box
-#/sketches/shaderCanvasExample
+#/sketches/basicSceneDemo
+#/sketches/shaderSceneDemo
+#/sketches/shaderCanvasDemo
 ```
 
 ## 🖼 Starting Example
