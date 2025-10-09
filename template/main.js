@@ -144,7 +144,7 @@ function init() {
     localStorage.getItem(storageKey("current-demo")) || defaultDemo;
 
   function setSelected(src) {
-    iframe.src = `/demo-template.html?script=${encodeURIComponent(src)}`;
+    iframe.src = `/src/demo-template.html?script=${encodeURIComponent(src)}`;
     localStorage.setItem(storageKey("current-demo"), src);
     nav.querySelectorAll("a.nav-link").forEach((a) => {
       a.classList.toggle("selected", a.dataset.src === src);

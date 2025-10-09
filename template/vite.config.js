@@ -14,5 +14,11 @@ export default defineConfig({
     emptyOutDir: true,
     sourcemap: true,
     target: "esnext",
+    rollupOptions: {
+      input: {
+        main: "./index.html",
+        demo: "./src/demo-template.html",
+      },
+    },
   },
 });
