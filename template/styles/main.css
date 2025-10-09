@@ -1,3 +1,9 @@
+:root {
+  --sidebar-width: 300px;
+  --sidebar-padding: 10px;
+  --sidebar-toggle-left-padding: 10px;
+}
+
 body {
   margin: 0;
   display: flex;
@@ -5,13 +11,16 @@ body {
   overflow: hidden;
   font-family: sans-serif;
 }
+
 nav {
-  width: 300px;
-  overflow-y: auto;
-  border-right: 1px solid #ccc;
-  padding: 1rem;
-  background: #f9f9f9;
+  width: var(--sidebar-width);
+  padding: var(--sidebar-padding);
+  overflow: auto;
+  background: #878787b4;
+  transition: width 0.3s ease, padding-left 0.3s ease, padding-right 0.3s ease;
+  white-space: nowrap;
 }
+
 main {
   flex-grow: 1;
   position: relative;
@@ -52,4 +61,33 @@ a.selected {
   font-weight: bold;
   text-decoration: underline;
   color: #005fa3;
+}
+
+#toggle-sidebar {
+  position: absolute;
+  top: 1rem;
+  left: calc(
+    var(--sidebar-width) + var(--sidebar-padding) * 2 +
+      var(--sidebar-toggle-left-padding)
+  );
+  z-index: 1000;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: left 0.3s ease;
+}
+
+body.sidebar-collapsed nav {
+  width: 0;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+  border: none;
+}
+
+body.sidebar-collapsed #toggle-sidebar {
+  left: var(--sidebar-toggle-left-padding);
 }
