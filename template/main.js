@@ -51,12 +51,12 @@ function saveDetailsState(state) {
 }
 
 // --- Build navigation tree ---
-const globMap = import.meta.glob("./src/**/script.ts");
+const globMap = import.meta.glob("/src/**/script.ts");
 
 function buildTree(paths) {
   const root = {};
   for (const fullPath of paths) {
-    const parts = fullPath.replace("./src/", "").split("/");
+    const parts = fullPath.replace("/src/", "").split("/");
     parts.pop(); // drop trailing script.ts
 
     let cur = root;
