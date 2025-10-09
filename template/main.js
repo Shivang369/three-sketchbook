@@ -1,6 +1,34 @@
-const toggleBtn = document.getElementById("toggle-sidebar");
-toggleBtn.addEventListener("click", () => {
-  document.body.classList.toggle("sidebar-collapsed");
+window.addEventListener("DOMContentLoaded", () => {
+  // create the nav
+  const nav = document.createElement("nav");
+
+  // Create the toggle button dynamically
+  const toggle = document.createElement("button");
+  toggle.id = "toggle-sidebar";
+  toggle.setAttribute("aria-label", "Toggle sidebar");
+  toggle.innerHTML = "❮"; // arrow icon
+
+  // Restore initial state from localStorage
+  const isCollapsed = localStorage.getItem("sidebar-collapsed") === "true";
+  if (isCollapsed) {
+    document.documentElement.classList.add("sidebar-collapsed");
+    toggle.style.transform = "rotate(180deg)";
+  }
+
+  document.body.appendChild(nav);
+  document.body.appendChild(toggle);
+
+  // Handle toggling
+  toggle.addEventListener("click", () => {
+    const root = document.documentElement;
+    const isCollapsed = root.classList.toggle("sidebar-collapsed");
+    localStorage.setItem("sidebar-collapsed", isCollapsed);
+    toggle.style.transform = isCollapsed ? "rotate(180deg)" : "rotate(0deg)";
+  });
+
+  nav.classList.add("ready");
+
+  init();
 });
 
 const DETAILS_STATE_KEY = "nav:details-open";
@@ -145,5 +173,3 @@ function init() {
     setSelected(a.dataset.src);
   });
 }
-
-init();
