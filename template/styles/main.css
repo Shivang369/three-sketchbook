@@ -3,8 +3,8 @@
   --sidebar-padding: 10px;
   --sidebar-toggle-left-padding: 10px;
   --sidebar-toggle-color: #4d4d4d;
-  --sidebar-blue: #000000;
-  --sidebar-selected-blue: #000000;
+  --sidebar-text-color: #000000;
+  --sidebar-selected-text-color: #000000;
 }
 
 body {
@@ -61,13 +61,13 @@ summary {
 }
 
 details summary {
-  color: var(--sidebar-blue);
+  color: var(--sidebar-text-color);
 }
 
 a {
   display: block;
   margin: 0.2rem 0;
-  color: var(--sidebar-blue);
+  color: var(--sidebar-text-color);
   text-decoration: none;
   padding-left: 10px;
 }
@@ -77,7 +77,7 @@ a:hover {
 a.selected {
   font-weight: bold;
   text-decoration: underline;
-  color: var(--sidebar-selected-blue);
+  color: var(--sidebar-selected-text-color);
 }
 
 #toggle-sidebar {
@@ -85,7 +85,7 @@ a.selected {
   top: 1rem;
   left: calc(var(--sidebar-width) + var(--sidebar-padding) * 2 + 10px);
   z-index: 100;
-  background: var(--sidebar-blue);
+  background: var(--sidebar-text-color);
   color: var(--sidebar-toggle-color);
   border: none;
   border-radius: 4px;
