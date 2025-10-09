@@ -1,12 +1,26 @@
 :root {
+  /* Layout */
   --sidebar-width: 300px;
   --sidebar-padding: 10px;
-  --sidebar-toggle-left-padding: 10px;
-  --sidebar-toggle-color: #4d4d4d;
-  --sidebar-text-color: #000000;
-  --sidebar-selected-text-color: #000000;
+
+  /* Toggle Button */
+  --toggle-left-padding: 10px;
+
+  /* Colors */
+  --color-bg: rgba(184, 183, 183, 0.4);
+  --color-text: #000;
+  --color-text-selected: #000;
+  --color-toggle-bg: #000;
+  --color-toggle-outline: #4d4d4d;
+
+  /* Effects */
+  --blur-amount: 10px;
+  --transition-speed: 0.3s;
 }
 
+/* ----------------------------
+   Layout
+----------------------------- */
 body {
   margin: 0;
   position: relative;
@@ -15,6 +29,23 @@ body {
   font-family: sans-serif;
 }
 
+main {
+  position: relative;
+  flex-grow: 1;
+}
+
+iframe {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+  z-index: 1;
+}
+
+/* ----------------------------
+   Sidebar
+----------------------------- */
 nav {
   position: absolute;
   top: 0;
@@ -23,35 +54,16 @@ nav {
   width: var(--sidebar-width);
   padding: var(--sidebar-padding);
   overflow-y: auto;
-  transition: transform 0.3s ease;
-  transform: translateX(0); /* visible state */
-  z-index: 10; /* ensures it's above the iframe */
-  background-color: rgba(184, 183, 183, 0.4); /* light transparent gray */
-  backdrop-filter: blur(10px); /* blur the iframe behind */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-}
 
-main {
-  flex-grow: 1;
-  position: relative;
-}
+  background-color: var(--color-bg);
+  backdrop-filter: blur(var(--blur-amount));
+  -webkit-backdrop-filter: blur(var(--blur-amount));
 
-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  border: none;
-  z-index: 1;
-}
+  color: var(--color-text);
+  z-index: 10;
 
-h2 {
-  margin-top: 2rem;
-}
-
-details {
-  margin-bottom: 1rem;
+  transition: transform var(--transition-speed) ease;
+  transform: translateX(0);
 }
 
 summary {
@@ -60,49 +72,55 @@ summary {
   margin-bottom: 0.5rem;
 }
 
-details summary {
-  color: var(--sidebar-text-color);
+details {
+  margin-bottom: 1rem;
 }
 
 a {
   display: block;
   margin: 0.2rem 0;
-  color: var(--sidebar-text-color);
-  text-decoration: none;
   padding-left: 10px;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
 }
+
 a:hover {
   text-decoration: underline;
 }
+
 a.selected {
   font-weight: bold;
-  text-decoration: underline;
-  color: var(--sidebar-selected-text-color);
+  color: var(--color-text-selected);
 }
 
+/* ----------------------------
+   Toggle Button
+----------------------------- */
 #toggle-sidebar {
   position: absolute;
   top: 1rem;
   left: calc(var(--sidebar-width) + var(--sidebar-padding) * 2 + 10px);
+
   z-index: 100;
-  background: var(--sidebar-text-color);
-  color: var(--sidebar-toggle-color);
+  background: var(--color-toggle-bg);
+  color: var(--color-toggle-outline);
   border: none;
   border-radius: 4px;
   padding: 0.5rem;
   cursor: pointer;
-  transition: left 0.3s ease;
-  outline: 2px solid var(--sidebar-toggle-color);
+  outline: 2px solid var(--color-toggle-outline);
+
+  transition: left var(--transition-speed) ease;
 }
 
-body.sidebar-collapsed #toggle-sidebar {
-  left: 10px;
-}
-
+/* ----------------------------
+   Collapsed State
+----------------------------- */
 body.sidebar-collapsed nav {
   transform: translateX(-100%);
 }
 
 body.sidebar-collapsed #toggle-sidebar {
-  left: var(--sidebar-toggle-left-padding);
+  left: var(--toggle-left-padding);
 }
