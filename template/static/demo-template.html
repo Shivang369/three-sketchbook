@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <link rel="stylesheet" href="/styles/three-demo.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script type="module">
+      const params = new URLSearchParams(window.location.search);
+      const scriptPath = params.get("script");
+
+      if (!scriptPath) {
+        console.log(`No script specified for ${window.location.href}`);
+      } else {
+        import(`${window.location.origin}/${scriptPath}`).catch((err) => {
+          console.error("Failed to load demo:", scriptPath, err);
+        });
+      }
+    </script>
+  </body>
+</html>

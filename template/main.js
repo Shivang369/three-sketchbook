@@ -1,4 +1,4 @@
-// --- Project namespace (change this per project or derive automatically) ---
+// --- Project namespace ---
 const PROJECT_KEY = import.meta.env?.VITE_PROJECT_NAME || "three-sketchbook";
 const storageKey = (name) => `${PROJECT_KEY}:${name}`;
 
@@ -32,7 +32,6 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   nav.classList.add("ready");
-
   init();
 });
 
@@ -52,13 +51,13 @@ function saveDetailsState(state) {
 }
 
 // --- Build navigation tree ---
-const globMap = import.meta.glob("./src/**/index.html");
+const globMap = import.meta.glob("./src/**/script.ts");
 
 function buildTree(paths) {
   const root = {};
   for (const fullPath of paths) {
     const parts = fullPath.replace("./src/", "").split("/");
-    parts.pop(); // drop trailing index.html
+    parts.pop(); // drop trailing script.ts
 
     let cur = root;
     for (let i = 0; i < parts.length; i++) {
@@ -145,7 +144,7 @@ function init() {
     localStorage.getItem(storageKey("current-demo")) || defaultDemo;
 
   function setSelected(src) {
-    iframe.src = src;
+    iframe.src = `/demo-template.html?script=${encodeURIComponent(src)}`;
     localStorage.setItem(storageKey("current-demo"), src);
     nav.querySelectorAll("a.nav-link").forEach((a) => {
       a.classList.toggle("selected", a.dataset.src === src);
