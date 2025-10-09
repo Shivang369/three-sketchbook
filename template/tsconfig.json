@@ -27,5 +27,5 @@
   },
   "include": [
     "src"
-, "main.js", "src/demo-loader.ts"  ]
+, "main.js", "src/demo-loader.js"  ]
 }
