@@ -6,16 +6,11 @@
 }
 
 html,
-body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* Fullscreen canvas inside its container (iframe) */
-.webgl {
+body,
+canvas.webgl {
+  margin: 0;
   width: 100%;
   height: 100%;
   display: block;
-  outline: none;
+  background: transparent; /* important */
 }
