@@ -16,7 +16,6 @@ export function setupScene({
   controls?: OrbitControls;
 } {
   const canvas = document.createElement("canvas");
-  canvas.classList.add("webgl");
 
   document.querySelector("#app")?.appendChild(canvas);
 

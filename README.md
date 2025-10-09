@@ -1,19 +1,18 @@
 # 📓️ three-sketchbook
 
-An **opinionated unofficial** [Vite](https://vitejs.dev/) + [Three.js](https://threejs.org/)
+An (unofficial) [Vite](https://vitejs.dev/) + [Three.js](https://threejs.org/)
 **sketchbook** template for quickly quickly building and organizing multiple Three.js demos in one place.
 
 <img src="./media/three-sketchbook-demo.gif" alt="Three Sketchbook Demo" width="50%" />
 
 The project is a fork of [three-demo-template](https://github.com/sbobyn/three-demo-template)
 that adds support for multiple demos (sketches) each with their own routes
-that can be easily navigated between using a provided gui; cleanup of GPU resources when
-navigating between sketches is handled automatically.
+that can be easily navigated between using a provided gui
 
-This template provides a clean, modern dev environment with:
+It includes:
 
-- Hash-based Router – each demo in the `sketches/` folder gets a route generated of the form: `#/sketches/<demoFileName>`
-- Persistent Navigation UI – select sketches via a built-in `lil-gui` dropdown with current selection saved in localStorage
+- a Navigation UI to navigate between demos
+- Dynamic route generation so all you need to do is add a new `.ts` sketch file and a route is generated and added to the navigation UI
 - **[Vite](https://vitejs.dev/)** – fast dev server with HMR, optimized builds
 - **[vite-plugin-glsl](https://www.npmjs.com/package/vite-plugin-glsl)** – import `.glsl, .vs, .fs, .vert, .frag` shader files directly with live reload
 - **[vite-plugin-restart](https://www.npmjs.com/package/vite-plugin-restart)** – automatically restart the dev server when config files change
@@ -26,23 +25,9 @@ This template provides a clean, modern dev environment with:
 
 ## 🎮 How It Works
 
-Each sketch is a file in `src/sketches/` that exports a function returning a `THREE.WebGLRenderer`.
-`main.ts` automatically loads them and handles:
+Each sketch is a file named `script.js` in `src/sketches/` is just a regular Three.js demo. `main.js` finds all files named `script.js` and creates a route for them in the UI. When you navigate to them with the UI, `main.js` swaps the `iframe.src` in the `iframe` in `index.html` to use `scripts.js`; the template used for each `iframe` is in `/static/demo-template/`
 
-- Creating & removing the canvas for each sketch
-- Stopping render loops (renderer.setAnimationLoop(null))
-- Disposing GPU resources (renderer.dispose())
-- Clearing sketch-specific GUIs
-
-Navigation is handled by a tiny hash router (based on [fragments-boilerplate-vanilla](https://github.com/phobon/fragments-boilerplate-vanilla)), so you can deep-link directly to a sketch:
-
-```
-#/sketches/basicSceneDemo
-#/sketches/shaderSceneDemo
-#/sketches/shaderCanvasDemo
-```
-
-## 🖼 Starting Example
+## 🖼 Starting Examples
 
 Inside `src/sketches/`, you’ll find multiple example sketches
 
@@ -67,42 +52,18 @@ pnpm dev
 
 Take a look at the example sketches in `src/sketches/`.
 
-Create a new file in `src/sketches/`, e.g. `src/sketches/my-sketch.ts`
-
-Export a function that contains your Three.js demo and return the renderer:
-
-```javascript
-import * as THREE from "three";
-import { setupScene } from "../core/setupScene";
-
-export default function (): THREE.WebGLRenderer {
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    100
-  );
-  camera.position.z = 2;
-
-  const { scene, renderer, canvas } = setupScene({ camera });
-  document.querySelector("#app")?.appendChild(canvas);
-
-  const mesh = new THREE.Mesh(
-    new THREE.BoxGeometry(),
-    new THREE.MeshStandardMaterial({ color: 0x00ffff })
-  );
-  scene.add(mesh);
-
-  renderer.setAnimationLoop(() => {
-    mesh.rotation.y += 0.01;
-    renderer.render(scene, camera);
-  });
-
-  return renderer;
-}
-```
+To add a new sketch, just add a subfolder with the name of your sketch and put your sketch in a file named `script.ts`.
 
 That's it!
+
+The helpers `/core/ShaderCanvas.ts` and `/core/setupScene.ts` both provide initial starting points (uses shown in the default sketches), but they are not required.
+
+If you do not wish to use them, you just need to add a canvas to the `app` element:
+
+```javascript
+const canvas = document.createElement("canvas");
+document.querySelector("#app")?.appendChild(canvas);
+```
 
 ## 🌐 Deployment
 
@@ -113,5 +74,3 @@ Push your project to GitHub.
 Go to [vercel.com/new](https://vercel.com/new).
 
 Import your repo and click Deploy.
-
-> Note: This template is unofficial and not maintained by the Three.js or Vite teams. It’s meant as a quick-start kit for personal projects, shader experiments, and prototyping.

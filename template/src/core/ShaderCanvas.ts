@@ -27,7 +27,6 @@ export class ShaderCanvas {
     enableStats?: boolean;
   }) {
     const canvas = document.createElement("canvas");
-    canvas.classList.add("webgl");
     document.querySelector("#app")?.appendChild(canvas);
 
     this.scene = new THREE.Scene();
