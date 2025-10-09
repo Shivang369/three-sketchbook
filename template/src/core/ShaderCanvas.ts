@@ -27,7 +27,7 @@ export class ShaderCanvas {
     enableStats?: boolean;
   }) {
     const canvas = document.createElement("canvas");
-    canvas.classList.add("shader-canvas");
+    canvas.classList.add("webgl");
     document.querySelector("#app")?.appendChild(canvas);
 
     this.scene = new THREE.Scene();
@@ -44,7 +44,10 @@ export class ShaderCanvas {
       uniforms: {
         uTime: { value: 0 },
         uResolution: {
-          value: new THREE.Vector2(window.innerWidth, window.innerHeight),
+          value: new THREE.Vector2(
+            window.innerWidth * window.devicePixelRatio,
+            window.innerHeight * window.devicePixelRatio
+          ),
         },
         uMouse: { value: new THREE.Vector4(0, 0, 0, 0) }, // x,y = current, z,w = click-down
         ...uniforms,
@@ -63,8 +66,8 @@ export class ShaderCanvas {
     window.addEventListener("resize", () => {
       this.renderer.setSize(window.innerWidth, window.innerHeight);
       this.material.uniforms.uResolution.value.set(
-        window.innerWidth,
-        window.innerHeight
+        window.innerWidth * window.devicePixelRatio,
+        window.innerHeight * window.devicePixelRatio
       );
     });
 
@@ -73,8 +76,8 @@ export class ShaderCanvas {
       const x = event.clientX;
       const y = window.innerHeight - event.clientY; // bottom-left origin
       this.material.uniforms.uMouse.value.set(
-        x,
-        y,
+        x * window.devicePixelRatio,
+        y * window.devicePixelRatio,
         this.material.uniforms.uMouse.value.z,
         this.material.uniforms.uMouse.value.w
       );
