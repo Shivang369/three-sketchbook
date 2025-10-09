@@ -84,8 +84,8 @@ export class ShaderCanvas {
     });
 
     window.addEventListener("mousedown", (event) => {
-      const x = event.clientX;
-      const y = window.innerHeight - event.clientY;
+      const x = event.clientX * window.devicePixelRatio;
+      const y = (window.innerHeight - event.clientY) * window.devicePixelRatio; // bottom-left origin
       this.material.uniforms.uMouse.value.set(x, y, x, y); // click-down pos stored in zw
     });
 
