@@ -1,6 +1,6 @@
 {
   "name": "create-three-sketchbook",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Unofficial Vite + Three.js sketchbook template with convenience helpers and examples",
   "type": "module",
   "bin": {
